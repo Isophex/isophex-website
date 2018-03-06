@@ -1,0 +1,25 @@
+.nav-list li {
+    position: relative;
+
+    a h1:hover {
+        opacity: .7;
+    }
+
+    
+    &:hover > span {
+        width: 100%;
+        transition: all .25s ease-in-out;
+    }
+
+    span {
+        height: 3px;
+        width: 0%;
+        background: $heading-text;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        transition: all .25s ease-in-out;
+    
+    }
+}
+

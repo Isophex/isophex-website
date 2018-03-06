@@ -1,0 +1,27 @@
+.site-nav {
+    visibility: hidden;
+    transform: translateX(100%);
+    opacity: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    // top: 80px;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background: $body;
+    height: calc(100% - 80px);
+    transition: all .25s ease-in;
+
+    .nav-list {
+        text-align: center;
+    }
+}
+
+.site-nav.open {
+    visibility: visible;
+    transform: translateX(0%);
+    opacity: 1;
+    transition: all .25s ease-in;
+}

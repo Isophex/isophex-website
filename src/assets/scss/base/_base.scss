@@ -15,19 +15,30 @@
     box-sizing: inherit;
   }
 
+  html,
   body {
-      
+    height: 100%;
+    width: 100%;
+  }
+
+  body {
     background: $body;
+    position: relative;
+    overflow-x: hidden;
+  }
 
-      @include respond-to(small) {
-        background: green;
-      }
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
 
-      @include respond-to(medium) {
-        background: purple;
-      }
+  a {
+    color: $primary;
+    text-decoration: none;
+  }
 
-      @include respond-to(large) {
-        background: blue;
-      }
+  img {
+    display: block;
+    width: 100%;
   }
