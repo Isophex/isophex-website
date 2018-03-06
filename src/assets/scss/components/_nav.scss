@@ -1,18 +1,19 @@
 .site-nav {
     visibility: hidden;
-    transform: translateX(100%);
+    transform: translate3d(100%,0,0);
     opacity: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: absolute;
+    position: fixed;
     // top: 80px;
     left: 0;
     bottom: 0;
+    right: 0;
     width: 100%;
     background: $body;
     height: calc(100% - 80px);
-    transition: all .25s ease-in;
+    transition: all .25s ease-out;
 
     .nav-list {
         text-align: center;
@@ -21,7 +22,9 @@
 
 .site-nav.open {
     visibility: visible;
-    transform: translateX(0%);
+    transform: translate3d(0,0,0);
+    // backface-visibility: hidden;
+    // perspective: 1000;
     opacity: 1;
-    transition: all .25s ease-in;
+    transition: all .25s ease-out;
 }

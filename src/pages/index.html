@@ -1,50 +1,14 @@
-<header class="site-header">
-    <div class="header-left">
-        <div class="icon-wrapper">
-            <div class="information-icon">i</div>
-        </div>
-    </div>
-    <div class="header-center">
-        <div class="logo-wrapper">
-            <img src="{{root}}/assets/img/logo-no-text.svg" alt="logo">
-        </div>
-    </div>
-    <div class="header-right">
-        <div class="hamburger-wrapper">
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </div>
-</header>
 
-<nav class="site-nav">
-    <ul class="nav-list">
-        <li>
-            <a href="#" class="nav-item">
-                <h1>About</h1>
-            </a>
-            <span></span>
-        </li>
-        <li>
-            <a href="#" class="nav-item">
-                <h1>Work</h1>
-            </a>
-            <span></span>
-        </li>
-        <li>
-            <a href="#" class="nav-item">
-                <h1>Contact</h1>
-            </a>
-            <span></span>
-        </li>
-        <li>
-            <a href="#" class="nav-item">
-                <h1>Blog</h1>
-            </a>
-            <span></span>
-        </li>
-    </ul>
-</nav>
+
+
+
+{{> site-header}}
+{{> site-nav}}
+
+<section id="intro-page" class="intro">
+    <div class="video-wrapper">
+        <video class="intro-video" autoplay loop controls="false">
+            <source src="{{root}}/assets/img/video.mp4" type="video/mp4">
+        </video>
+    </div>
+</section>

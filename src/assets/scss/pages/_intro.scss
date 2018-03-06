@@ -1,0 +1,11 @@
+.video-wrapper 
+{
+    background-image: url('{{root}}/assets/img/video-poster.jpeg'); //not showing because div has not height/width
+    .intro-video {
+        display: none;
+        @include respond-to(large) {
+            display: block;
+        }
+    }
+    
+}
