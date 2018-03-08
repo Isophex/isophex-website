@@ -1,0 +1,15 @@
+.grid {
+
+    .grid {
+        display: block;
+    }
+    @include respond-to(medium) {
+        display: flex;
+        align-items: center;
+    }
+
+    .col {
+        flex: 1;
+       
+    } 
+}

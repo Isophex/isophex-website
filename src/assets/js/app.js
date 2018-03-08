@@ -7,5 +7,6 @@ $(document).ready(function(){
     $(".hamburger-wrapper").click(function(){
         $(this).toggleClass('open');
         $(".site-nav").toggleClass('open');
+        $("body").toggleClass("no-scroll");
 	});
 });

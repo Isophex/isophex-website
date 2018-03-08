@@ -1,10 +1,83 @@
+.intro {
+    height: 100%;
+    width: 100%;
+    background-image: url('../img/video-poster.jpg'); //not showing because div has not height/width
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: cover;
+    position: relative;
+    z-index: 10;
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        z-index: -9;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 100%;
+        width: 100%;
+        background: rgba($color: #031b4e, $alpha: .6);
+    }
+
+    @include border-bottom();
+
+    .content-wrapper {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+
+        h1 {
+            font-size: 64px;
+            color: $body;
+            text-align: center;
+        }
+
+        .nav-item {
+            color: $body;
+            position: absolute;
+            bottom: 25px;
+            width: 100%;
+            text-align: center;
+
+            @include respond-to(large) {
+                bottom: 50px;
+            }
+
+            &:hover {
+                opacity: .7;
+            }
+
+
+        }
+
+    }
+}
+
+
 .video-wrapper 
 {
-    background-image: url('{{root}}/assets/img/video-poster.jpeg'); //not showing because div has not height/width
+    
+
     .intro-video {
+
         display: none;
+
         @include respond-to(large) {
+            position: absolute;
+            z-index: -10;
+            top: 50%;
+            left: 50%;
             display: block;
+            min-width: 100%;
+            min-height: 100%;
+            transform: translate(-50%,-50%);
+            object-fit: cover;
         }
     }
     

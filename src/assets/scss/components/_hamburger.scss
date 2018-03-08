@@ -41,9 +41,9 @@
 
 .hamburger-wrapper.open {
 
-    
-
-
+    span {
+        background: $primary;
+    }
 
     span:nth-child(1) {
         top: 12px;
