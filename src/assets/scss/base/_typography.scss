@@ -20,4 +20,55 @@ body {
 
 h1, h2, h3 {
     font-family: 'Avenir Next', sans-serif;
+    color: $heading-text;
+    margin: 0;
+}
+
+h1 {
+   font-size: 32px; 
+
+   @include respond-to(large) {
+        font-size: 42px;
+    } 
+}
+
+h2 {
+    font-size: 26px;
+
+    @include respond-to(large) {
+        font-size: 32px;
+    } 
+    
+}
+
+h3 {
+    font-size: 28px;
+}
+
+.mission-text {
+    font-size: 48px;
+    color: $body;
+    text-align: center;
+    @include respond-to(large) {
+        font-size: 64px;
+       
+            
+    } 
+}
+
+.logo-text {
+    font-size: 48px;
+}
+
+.nav-item h1 {
+
+    // &:hover {
+    //     color: $primary;
+    // }
+    
+    @include respond-to(large) {
+        font-size: 64px;
+       
+            
+    } 
 }

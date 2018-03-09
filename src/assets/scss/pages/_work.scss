@@ -1,0 +1,42 @@
+.work {
+
+    .image-wrapper {
+        max-width: 400px;
+        height: 300px;
+        position: relative;
+
+        img {
+            position: absolute;
+            transform: translateY(100px);
+            transition: all 1s ease;
+
+            &:hover {
+                
+                transform: translateY(0);
+            }
+        }
+        // height: 200px;
+
+        // img:hover {
+        //     transform: translateY(-50px);
+        // }
+    }
+
+    .grid {
+        align-items: flex-end;
+    }
+
+    .helios-case {
+
+
+        .left {
+            overflow: hidden;
+           
+            
+        }
+
+        // .right {
+        //     padding-left: 20px;
+        // }
+    }
+}

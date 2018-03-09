@@ -1,29 +1,61 @@
 .about {
-
     .content-wrapper {
         padding: 100px 0;
     }
-
     .logo-wrapper {
         width: 115px;
     }
-    
     .who-we-are {
         .left {
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-    
-            
-    
+            padding-bottom: 25px;
+            position: relative;
+            @include border-bottom();
+            @include respond-to(large) {
+                border-bottom: none;
+                padding-bottom: 0;
+            }
             .logo-text {
                 margin: 0;
-                font-size: 48px;
+            }
+        }
+        .right {
+            padding-top: 25px;
+            @include respond-to(large) {
+                padding-top: 0px;
             }
         }
     }
+    .what-we-do {
+        .grid {
+            align-items: flex-start;
+        }
+        .col {
+            padding-bottom: 25px;
 
-    
-    
+            &:last-child {
+                padding-bottom: 0;
+            }
+
+            @include respond-to(large) {
+                padding-bottom: 0px;
+            }
+
+            .center {
+                @include respond-to(large) {
+                    padding: 0px 25px;
+                }
+            }
+        }
+        h2 {
+            text-align: center;
+        }
+        .icon-wrapper {
+            max-width: 200px;
+            margin: 0 auto;
+        }
+    }
 }
