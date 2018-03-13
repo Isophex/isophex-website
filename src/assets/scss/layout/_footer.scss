@@ -1,0 +1,99 @@
+.site-footer {
+
+    background: $body;
+
+    .content-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        @include respond-to(medium) {
+            flex-direction: row;
+            align-items: flex-end;
+            justify-content: space-between;
+        }
+
+    }
+
+    .logo-wrapper {
+        max-width: 200px;
+
+        margin: 0 auto;
+        @include respond-to(medium) {
+            margin: 0;
+        }
+        
+    }
+
+    .nav-list {
+
+        margin-top: 25px;
+
+        @include respond-to(medium) {
+            margin-top: 50px;
+        }
+    
+        li {
+            margin-right: 15px;
+            display: inline-block;
+
+            a {
+                font-family: "Avenir Next", sans-serif;
+                color: $heading-text;
+            }
+
+        }
+
+    }
+
+    .right {
+        margin-top: 50px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: center;
+        
+
+        @include respond-to(medium) {
+            margin-top: 0;
+            align-items: flex-end;    
+        }
+
+        .social-list {
+
+            li {
+                display: inline-block;
+                margin-left: 15px;
+
+                &:first-child {
+                    margin-left: 0px;
+
+        
+                    
+
+                }
+               
+
+            }
+    
+        }
+
+        .copy {
+
+            margin-top: 25px;
+
+            @include respond-to(medium) {
+                margin-top: 50px;
+            }
+            
+            margin-bottom: 0;
+        }
+
+    }
+
+
+    
+
+
+}

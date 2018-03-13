@@ -42,7 +42,7 @@ h2 {
 }
 
 h3 {
-    font-size: 28px;
+    font-size: 22px;
 }
 
 .mission-text {
@@ -65,9 +65,20 @@ h3 {
     // &:hover {
     //     color: $primary;
     // }
+
+    font-size: 48px;
     
     @include respond-to(large) {
         font-size: 64px;
+       
+            
+    } 
+}
+
+.grid h1 {
+    text-align: center;
+    @include respond-to(medium) {
+        text-align: left;
        
             
     } 

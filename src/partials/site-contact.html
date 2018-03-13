@@ -1,0 +1,47 @@
+<section id="contact" class="contact">
+        <div class="row">
+            <div class="container">
+                <h1>
+                    Request a Meeting or Get a Quote.
+                </h1>
+                <p>We would love to sit down and talk about your project. Learning about your business and the scope of the project
+                    is a crucial step in its final success. Feel free to fill out the form below or message us directly at
+                    <span>
+                        <a href="mailto:hello@isophex.com">hello@isophex.com.</a>
+                    </span>
+                </p>
+                <div class="form-wrapper">
+                    <form id="ajax-contact" method="post" action="mailer.php" class="contact-form">
+                        <div class="grid">
+                            <div class="col">
+                                <fieldset class="company-input">
+                                    <label for="company">Company</label>
+                                    <input id="company" name="company" type="text" required="">
+                                </fieldset>
+                            </div>
+                            <div class="col">
+                                <fieldset class="name-input">
+                                    <label for="name">First / Last Name</label>
+                                    <input id="name" name="name" type="text" required="">
+                                </fieldset>
+                            </div>
+                        </div>
+                        <fieldset class="email-input">
+                            <label for="email">Email</label>
+                            <input id="email" name="email" type="email" required="">
+                        </fieldset>
+    
+                        <fieldset class="message-input">
+                            <label for="message">Message</label>
+                            <textarea name="message" id="message" required=""></textarea>
+                        </fieldset>
+    
+                        <button class="btn" type="submit">
+                            Contact
+                        </button>
+    
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
