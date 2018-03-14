@@ -22,6 +22,7 @@
                 margin-right: -25px;
                 height: 1px;
                 background: #e0e0e0;
+                // box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, .3);
             }
 
         }
@@ -29,23 +30,28 @@
         img {
 
             position: relative;
-            box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, .3);
+            // box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, .3);
 
             @include respond-to(large) {
                 box-shadow: none;
                 position: absolute;
                 transform: translateY(100px);
-                transition: all 1s ease;
+                transition: all .75s ease;
+
+
+
             }
             
             
             
 
             &:hover {
-                box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, .3);
+                // box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, .3);
                 transform: translateY(0);
             }
         }
+
+       
         // height: 200px;
 
         // img:hover {
@@ -183,7 +189,7 @@
 
                
                 border-radius: 50%;
-                border: 1px solid $primary;
+                border: 2px solid $primary;
 
                 img {
                     border-radius: 50%;
