@@ -13,7 +13,7 @@
     right: 0;
     width: 100%;
     top: 80px;
-    background: $body;
+    background: rgba($color: $body, $alpha: .98);
     height: calc(100% - 80px);
     transition: all .25s ease-out;
     backface-visibility: hidden;
