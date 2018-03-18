@@ -12,81 +12,106 @@ $(document).ready(function () {
         $("body").toggleClass("no-scroll");
     });
 
-    // $('a[href*="#"]:not([href="#"])').click(function () {
-    //     if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
-    //         var target = $(this.hash);
-    //         target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-    //         if (target.length) {
-    //             $('html, body').animate({
-    //                 scrollTop: target.offset().top - 80,
-
-    //             }, 500, function () {
-    //                 $(".hamburger-wrapper").removeClass('open');
-    //                 $(".site-nav").removeClass('open');
-    //                 $("body").removeClass("no-scroll");
-    //             });
-    //             return false;
-    //         }
-    //     }
-    // });
-
-    // var $root = $('html, body');
-
-    // $('a[href*="#"]:not([href="#"])').click(function (event) {
-
-    //     var href = $.attr(this, 'href');
-
-    //     // On-page links
-    //     if (
-    //         location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '')
-    //         &&
-    //         location.hostname == this.hostname
-    //     ) {
-    //         // Figure out element to scroll to
-    //         var target = $(this.hash);
-    //         target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-    //         // Does a scroll target exist?
-    //         if (target.length) {
-    //             // Only prevent default if animation is actually gonna happen
-    //             event.preventDefault();
-    //             $root.animate({
-    //                 scrollTop: target.offset().top - 80,
-    //             }, 500, function () {
-    //                 // Callback after animation
-    //                 // Must change focus!
-    //                 // var $target = $(target);
-    //                 // $target.focus();
-    //                 // if ($target.is(":focus")) { // Checking if the target was focused
-    //                 //     return false;
-    //                 // } else {
-    //                 //     $target.attr('tabindex', '-1'); // Adding tabindex for elements not focusable
-    //                 //     $target.focus(); // Set focus again
-    //                 // };
-    //                 window.location.hash = href;
-    //                 $(".hamburger-wrapper").removeClass('open');
-    //                 $(".site-nav").removeClass('open');
-    //                 $("body").removeClass("no-scroll");
-    //             });
-    //         }
-    //     }
-    // });
 
     var $root = $('html, body');
 
-    $('a[href^="#"]').click(function () {
+    $('a[href^="#"]').click(function (e) {
+        e.preventDefault();
+
         var href = $.attr(this, 'href');
 
         $root.animate({
             scrollTop: $(href).offset().top - 80
         }, 500, function () {
+
             window.location.hash = href;
+
+            //fixes jumping and not taking offset into account
+            $root.animate({
+                'scrollTop': $(href).offset().top - 80
+            }, 0);
+
             $(".hamburger-wrapper").removeClass('open');
             $(".site-nav").removeClass('open');
             $("body").removeClass("no-scroll");
-            
+
+
         });
 
         return false;
+    });
+
+    // $.fn.isInViewport = function () {
+    //     var elementTop = $(this).offset().top;
+    //     var elementBottom = elementTop + $(this).outerHeight();
+
+    //     var viewportTop = $(window).scrollTop();
+    //     var viewportBottom = viewportTop + $(window).height();
+
+    //     return elementBottom > viewportTop && elementTop < viewportBottom;
+    // };
+
+
+    var scrollAmount = 100;
+    var lastScrollTop = 0, delta = 1;
+    var scrollingDown = true;
+
+    var $helios = $(".helios .image-wrapper img");
+
+    $(window).on('resize scroll', function () {
+
+        var st = $(this).scrollTop();
+
+        if (Math.abs(lastScrollTop - st) <= delta)
+            return;
+
+        if (st > lastScrollTop) {
+            // downscroll code
+            
+            scrollingDown = true;
+            console.log(scrollingDown);
+
+        } else {
+            // upscroll code
+            
+            scrollingDown = false;
+            console.log(scrollingDown);
+        }
+        lastScrollTop = st;
+
+
+
+        var top_of_Helios = $(".helios").offset().top;
+        var bottom_of_Helios = $(".helios").offset().top + $(".helios").outerHeight();
+        var bottom_of_screen = $(window).scrollTop() + window.innerHeight;
+        var top_of_screen = $(window).scrollTop();
+    
+        if((bottom_of_screen > top_of_Helios) && (top_of_screen < bottom_of_Helios)){
+            if(scrollingDown){
+                if(scrollAmount >= 0) {
+                    $helios.css({
+                        transform: "translateY(" + (scrollAmount -= 2) + "px)",
+                       });
+                }
+                
+            } else {
+                if(scrollAmount <= 100) {
+                $helios.css({
+                    transform: "translateY(" + (scrollAmount += 2) + "px)",
+                   });
+                }
+            }
+           
+        }
+        else {
+            $helios.css({
+                transform: "translateY(100px)",
+            });
+            scrollAmount = 100;
+            
+        }
+        
+        // scrollAmount++;
     });
 
     var typed = new Typed('.type-here', {

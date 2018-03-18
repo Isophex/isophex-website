@@ -34,9 +34,9 @@
 
             @include respond-to(large) {
                 box-shadow: none;
-                // position: absolute;
-                // transform: translateY(100px);
-                // transition: all .75s ease;
+                position: absolute;
+                transform: translateY(100px);
+                // transition: transform ease;
 
 
 
