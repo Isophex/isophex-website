@@ -4,14 +4,50 @@ import Vivus from 'vivus';
 
 window.$ = $;
 
+
 $(document).ready(function () {
     console.log("Document is ready");
-    $(".hamburger-wrapper").click(function () {
+
+
+
+    var $body = $("body");
+    var $hamburger = $(".hamburger-wrapper");
+    var $nav = $(".site-nav");
+    var $infoIconWrapper = $(".site-header .icon-wrapper");
+    var $infoIcon = $(".information-icon");
+    var $modal = $(".info-modal");
+    var $modalOverlay = $(".info-modal .overlay");
+    var $closeModal = $(".close-button-wrapper");
+    var $modlaContent = $(".modal-content");
+
+    $hamburger.click(function () {
         $(this).toggleClass('open');
-        $(".site-nav").toggleClass('open');
-        $("body").toggleClass("no-scroll");
+        $nav.toggleClass('open');
+        $body.toggleClass("no-scroll");
     });
 
+    $infoIconWrapper.click(function () {
+        $hamburger.attr("class", "hamburger-wrapper");
+        $nav.attr("class", "site-nav");
+        $infoIcon.toggleClass("open");
+        $modal.toggleClass("open");
+        $modlaContent.toggleClass("open")
+        $body.toggleClass("no-scroll");
+    });
+
+    $closeModal.click(function () {
+        $modal.toggleClass("open");
+        $body.toggleClass("no-scroll");
+        $infoIcon.toggleClass("open");
+        $modlaContent.toggleClass("open")
+    });
+
+    $modalOverlay.click(function(){
+        $infoIcon.toggleClass("open");
+        $modal.toggleClass("open");
+        $body.toggleClass("no-scroll");
+        $modlaContent.toggleClass("open")
+    });
 
     var $root = $('html, body');
 
@@ -41,78 +77,85 @@ $(document).ready(function () {
         return false;
     });
 
-    // $.fn.isInViewport = function () {
-    //     var elementTop = $(this).offset().top;
-    //     var elementBottom = elementTop + $(this).outerHeight();
+    //used to determine if scrolling up or down
+    var lastScrollTop = 0;
 
-    //     var viewportTop = $(window).scrollTop();
-    //     var viewportBottom = viewportTop + $(window).height();
+    //header bar height
+    var headerHeight = 80;
 
-    //     return elementBottom > viewportTop && elementTop < viewportBottom;
-    // };
+    //plugin for determining if in viewport
+    $.fn.isInViewport = function () {
+        var elementTop = $(this).offset().top;
+        var elementBottom = elementTop + $(this).outerHeight();
+        var viewportTop = $(window).scrollTop();
+        var viewportBottom = viewportTop + $(window).height();
+        return elementBottom > viewportTop && (elementTop + 300) < viewportBottom;
+    };
+
+    var $heliosTarget = $(".helios .image-wrapper");
+    var $heliosImg = $(".helios .image-wrapper img");
+    var $inclineTarget = $(".incline .image-wrapper");
+    var $inclineImg = $(".incline .image-wrapper img");
+    var $chinahubTarget = $(".chinahub .image-wrapper");
+    var $chinahubImg = $(".chinahub .image-wrapper img");
+
+    $(window).on("resize scroll", function () {
+
+        if ($(this).width() > 992) {
+            imageScroller($heliosTarget, $heliosImg);
+            imageScroller($inclineTarget, $inclineImg);
+            imageScroller($chinahubTarget, $chinahubImg);
+        }
 
 
-    var scrollAmount = 100;
-    var lastScrollTop = 0, delta = 1;
-    var scrollingDown = true;
 
-    var $helios = $(".helios .image-wrapper img");
+    });
 
-    $(window).on('resize scroll', function () {
+    function imageScroller(target, img) {
 
-        var st = $(this).scrollTop();
+        var st = $(window).scrollTop();
 
-        if (Math.abs(lastScrollTop - st) <= delta)
-            return;
+        if (target.isInViewport()) {
 
-        if (st > lastScrollTop) {
-            // downscroll code
-            
-            scrollingDown = true;
-            console.log(scrollingDown);
+            //if scrolling down
+            if (st >= lastScrollTop) {
+
+
+                img.animate({ top: "-=10" }, 10, function () {
+
+                    if ($(this).css('top') <= "0") {
+                        $(this).css({ top: "0" });
+                    }
+
+                });
+
+            } else {
+
+                //scrolling up
+                img.animate({ top: "+=10" }, 10, function () {
+
+                    if ($(this).position().top >= 100) {
+                        $(this).css({ top: "100px" });
+                    }
+
+                });
+
+            }
+
+            //resets scroller var
+            lastScrollTop = st;
 
         } else {
-            // upscroll code
-            
-            scrollingDown = false;
-            console.log(scrollingDown);
+
+            img.css({ top: "100px" });
         }
-        lastScrollTop = st;
 
 
 
-        var top_of_Helios = $(".helios").offset().top;
-        var bottom_of_Helios = $(".helios").offset().top + $(".helios").outerHeight();
-        var bottom_of_screen = $(window).scrollTop() + window.innerHeight;
-        var top_of_screen = $(window).scrollTop();
-    
-        if((bottom_of_screen > top_of_Helios) && (top_of_screen < bottom_of_Helios)){
-            if(scrollingDown){
-                if(scrollAmount >= 0) {
-                    $helios.css({
-                        transform: "translateY(" + (scrollAmount -= 2) + "px)",
-                       });
-                }
-                
-            } else {
-                if(scrollAmount <= 100) {
-                $helios.css({
-                    transform: "translateY(" + (scrollAmount += 2) + "px)",
-                   });
-                }
-            }
-           
-        }
-        else {
-            $helios.css({
-                transform: "translateY(100px)",
-            });
-            scrollAmount = 100;
-            
-        }
-        
-        // scrollAmount++;
-    });
+
+
+    }
+
 
     var typed = new Typed('.type-here', {
         stringsElement: '#typed-strings',
@@ -131,12 +174,5 @@ $(document).ready(function () {
     new Vivus('twisty-graphic', { duration: 200 });
     new Vivus('ecommerce-graphic', { duration: 200 });
     new Vivus('blog-graphic', { duration: 150 });
-
-    // var $heliosContainer = $(".helios-case .left");
-    // var $heliosImg = $(".helios-case .image-wrapper");
-
-    // $heliosContainer.mouseenter(function(){
-    //     $heliosImg.addClass("upper");
-    // });
 
 });
