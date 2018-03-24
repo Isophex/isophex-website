@@ -8,8 +8,6 @@ window.$ = $;
 $(document).ready(function () {
     console.log("Document is ready");
 
-
-
     var $body = $("body");
     var $hamburger = $(".hamburger-wrapper");
     var $nav = $(".site-nav");
@@ -42,7 +40,7 @@ $(document).ready(function () {
         $modlaContent.toggleClass("open")
     });
 
-    $modalOverlay.click(function(){
+    $modalOverlay.click(function () {
         $infoIcon.toggleClass("open");
         $modal.toggleClass("open");
         $body.toggleClass("no-scroll");
@@ -84,13 +82,19 @@ $(document).ready(function () {
     var headerHeight = 80;
 
     //plugin for determining if in viewport
-    $.fn.isInViewport = function () {
-        var elementTop = $(this).offset().top;
-        var elementBottom = elementTop + $(this).outerHeight();
+    function isInViewport(elem) {
+        var elementTop = $(elem).offset().top;
+        var elementBottom = elementTop + $(elem).outerHeight();
         var viewportTop = $(window).scrollTop();
         var viewportBottom = viewportTop + $(window).height();
         return elementBottom > viewportTop && (elementTop + 300) < viewportBottom;
     };
+
+    // $.fn.isOnTop = function() {
+    //     var elementTop = $(this).offset().top;
+    //     var viewportTop = $(window).scrollTop();
+    //     return elementTop > viewportTop;
+    // }
 
     var $heliosTarget = $(".helios .image-wrapper");
     var $heliosImg = $(".helios .image-wrapper img");
@@ -99,7 +103,37 @@ $(document).ready(function () {
     var $chinahubTarget = $(".chinahub .image-wrapper");
     var $chinahubImg = $(".chinahub .image-wrapper img");
 
+    var currentHash = "#";
+    var anchorArr = $('.anchor');
+
     $(window).on("resize scroll", function () {
+
+
+        var currentTop = window.pageYOffset / 1;
+        
+
+        anchorArr.each(function(){
+
+            
+
+            var currentElementTop = $(this).offset().top;
+            var hash = $(this).attr('id');
+            if (currentElementTop - 80 < currentTop && currentTop < currentElementTop - 80 + $(this).height() && currentHash != hash) {
+                if (history.pushState) {
+                    history.pushState(null, null, '#' + hash);
+                }
+                else {
+                    location.hash = '#' + hash;
+                }
+                currentHash = hash;
+            } 
+            
+
+        
+        });
+            
+
+
 
         if ($(this).width() > 992) {
             imageScroller($heliosTarget, $heliosImg);
@@ -115,7 +149,11 @@ $(document).ready(function () {
 
         var st = $(window).scrollTop();
 
-        if (target.isInViewport()) {
+        // if (target.isOnTop()) {
+
+        // }
+
+        if (isInViewport(target)) {
 
             //if scrolling down
             if (st >= lastScrollTop) {
@@ -150,10 +188,6 @@ $(document).ready(function () {
             img.css({ top: "100px" });
         }
 
-
-
-
-
     }
 
 
@@ -161,7 +195,7 @@ $(document).ready(function () {
         stringsElement: '#typed-strings',
         cursorChar: ' |',
         loop: false,
-        typeSpeed: 200,
+        typeSpeed: 150,
         backSpeed: 0,
         fadeOut: true,
         onComplete: function (self) {

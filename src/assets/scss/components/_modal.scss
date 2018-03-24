@@ -35,7 +35,7 @@
 .modal-content {
     height: 100%;
     max-width: 800px;
-    max-height: 600px;
+    max-height: 900px;
     overflow: auto;
     background: $body-odd;
     padding: 25px 0;
@@ -44,6 +44,13 @@
     z-index: 100;
     transform: translateY(-150%);
     transition: all .5s ease;
+
+    @include respond-to(medium) {
+        height: auto;
+    }
+
+
+
     &.open {
         transform: translateY(0%);
         transition: all .5s ease;
@@ -91,6 +98,14 @@
     p {
         margin: 0;
     }
+
+    .grid {
+        align-items: flex-start;
+
+    }
+
+    
+
     .left,
     .right {
         display: flex;
@@ -98,6 +113,7 @@
         align-items: center;
         justify-content: center;
         position: relative;
+        padding-top: 25px;
     }
     .right {
         @include respond-to(medium) {
@@ -109,7 +125,7 @@
                 top: 0;
                 left: 0;
                 right: 0;
-                margin-top: -25px;
+                
                 background: $accent;
                 height: 100%;
                 width: 1px;
@@ -118,14 +134,31 @@
     }
     .image-wrapper {
         border-radius: 50%;
+        margin-bottom: 25px;
         border: 2px solid $primary;
         width: 100px;
         img {
             border-radius: 50%;
         }
     }
-    .people-wrapper {
-        padding: 25px 0;
+    // .people-wrapper {
+    //     padding: 25px 0;
+    // }
+
+    .social-list {
+
+        padding: 10px 0px;
+
+        li {
+            display: inline-block;
+            margin-right: 5px;
+
+            &:last-child {
+                margin-right: 0px;
+            }
+
+        }
+
     }
 }
 
