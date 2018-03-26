@@ -22,7 +22,7 @@ $(document).ready(function () {
         $(this).toggleClass('open');
         $nav.toggleClass('open');
         // $body.toggleClass("no-scroll");
-        
+
 
         $infoIcon.removeClass("open");
         $modal.removeClass("open");
@@ -37,7 +37,7 @@ $(document).ready(function () {
         $modal.toggleClass("open");
         $modlaContent.toggleClass("open");
 
-        
+
     });
 
     $closeModal.click(function () {
@@ -51,7 +51,7 @@ $(document).ready(function () {
         $infoIcon.toggleClass("open");
         $modal.toggleClass("open");
         $body.removeClass("no-scroll");
-        
+
         $modlaContent.toggleClass("open");
     });
 
@@ -119,26 +119,17 @@ $(document).ready(function () {
 
         var currentTop = window.pageYOffset / 1;
 
-        
-        
 
-        anchorArr.each(function(){
 
-            
-
+        //manual url change
+        anchorArr.each(function () {
             var currentElementTop = $(this).offset().top;
             var hash = $(this).attr('id');
 
-            
-
             if (currentElementTop - 80 < currentTop && currentTop < currentElementTop - 80 + $(this).height() && currentHash != hash) {
-                
-                if (history.pushState) {
 
-                    
+                if (history.pushState) {
                     history.pushState(null, null, '#' + hash);
-                    
-                    
                 }
 
                 else {
@@ -146,74 +137,117 @@ $(document).ready(function () {
                 }
 
                 currentHash = hash;
-
-                
             }
-            
-            
-
-        
         });
 
-
-            
-
-
-
+        //product image scrolling 
         if ($(this).width() > 992) {
-            imageScroller($heliosTarget, $heliosImg);
-            imageScroller($inclineTarget, $inclineImg);
-            imageScroller($chinahubTarget, $chinahubImg);
+            var st = $(window).scrollTop();
+
+            //if image is in viewport
+            if (isInViewport($heliosTarget)) {
+
+                //if scrolling down
+                if (st >= lastScrollTop) {
+
+
+                    $heliosImg.animate({ top: "-=5" }, 5, function () {
+
+                        if ($(this).css('top') <= "0") {
+                            $(this).css({ top: "0" });
+                        }
+
+                    });
+
+                } else {
+
+                    //scrolling up
+                    $heliosImg.animate({ top: "+=5" }, 5, function () {
+
+                        if ($(this).position().top >= 100) {
+                            $(this).css({ top: "100px" });
+                        }
+
+                    });
+
+                }
+
+                //resets scroller var
+                lastScrollTop = st;
+
+            } else if (isInViewport($inclineTarget)) {
+                $heliosImg.css({ top: "100px" });
+
+                 //if scrolling down
+                 if (st >= lastScrollTop) {
+
+
+                    $inclineImg.animate({ top: "-=5" }, 5, function () {
+
+                        if ($(this).css('top') <= "0") {
+                            $(this).css({ top: "0" });
+                        }
+
+                    });
+
+                } else {
+
+                    //scrolling up
+                    $inclineImg.animate({ top: "+=5" }, 5, function () {
+
+                        if ($(this).position().top >= 100) {
+                            $(this).css({ top: "100px" });
+                        }
+
+                    });
+
+                }
+
+                //resets scroller var
+                lastScrollTop = st;
+            } else if (isInViewport($chinahubTarget)) {
+                $inclineImg.css({ top: "100px" });
+
+                 //if scrolling down
+                 if (st >= lastScrollTop) {
+
+
+                    $chinahubImg.animate({ top: "-=5" }, 5, function () {
+
+                        if ($(this).css('top') <= "0") {
+                            $(this).css({ top: "0" });
+                        }
+
+                    });
+
+                } else {
+
+                    //scrolling up
+                    $chinahubImg.animate({ top: "+=5" }, 5, function () {
+
+                        if ($(this).position().top >= 100) {
+                            $(this).css({ top: "100px" });
+                        }
+
+                    });
+
+                }
+
+                //resets scroller var
+                lastScrollTop = st;
+            }
+        
+
         }
 
 
 
     });
 
-    function imageScroller(target, img) {
-
-        var st = $(window).scrollTop();
-
-        // if (target.isOnTop()) {
-
-        // }
-
-        if (isInViewport(target)) {
-
-            //if scrolling down
-            if (st >= lastScrollTop) {
 
 
-                img.animate({ top: "-=10" }, 10, function () {
 
-                    if ($(this).css('top') <= "0") {
-                        $(this).css({ top: "0" });
-                    }
 
-                });
-
-            } else {
-
-                //scrolling up
-                img.animate({ top: "+=10" }, 10, function () {
-
-                    if ($(this).position().top >= 100) {
-                        $(this).css({ top: "100px" });
-                    }
-
-                });
-
-            }
-
-            //resets scroller var
-            lastScrollTop = st;
-
-        } else {
-
-            img.css({ top: "100px" });
-        }
-
-    }
 
 
     var typed = new Typed('.type-here', {
@@ -233,5 +267,63 @@ $(document).ready(function () {
     new Vivus('twisty-graphic', { duration: 200 });
     new Vivus('ecommerce-graphic', { duration: 200 });
     new Vivus('blog-graphic', { duration: 150 });
+
+    //ajax email form with validation
+
+    $(function () {
+
+        // Get the form.
+        var form = $('#ajax-contact');
+
+        // Get the messages div.
+        var formMessages = $('#form-messages');
+
+        // Set up an event listener for the contact form.
+        $(form).submit(function (e) {
+            // Stop the browser from submitting the form.
+            e.preventDefault();
+
+            // Serialize the form data.
+            var formData = $(form).serialize();
+
+            // Submit the form using AJAX.
+            $.ajax({
+                    type: 'POST',
+                    url: $(form).attr('action'),
+                    data: formData
+                })
+                .done(function (response) {
+                    // Make sure that the formMessages div has the 'success' class.
+                    $(formMessages).removeClass('error');
+                    $(formMessages).addClass('success');
+
+                    // Set the message text.
+                    $(formMessages).text(response);
+
+                    // Clear the form.
+                    // $('#meeting-company').val('');
+                    $('#company').val('');
+                    $('#name').val('');
+                    $('#email').val('');
+                    $('#message').val('');
+                    $("#ajax-contact")[0].reset()
+                })
+                .fail(function (data) {
+                    // Make sure that the formMessages div has the 'error' class.
+                    $(formMessages).removeClass('success');
+                    $(formMessages).addClass('error');
+
+                    // Set the message text.
+                    if (data.responseText !== '') {
+                        $(formMessages).text(data.responseText);
+                    } else {
+                        $(formMessages).text('Oops! An error occured and your message could not be sent.');
+                    }
+                });
+
+        });
+
+    });
+
 
 });
