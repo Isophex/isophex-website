@@ -35,15 +35,19 @@
 .modal-content {
     height: 100%;
     max-width: 800px;
-    max-height: 900px;
+    max-height: 1000px;
     overflow: auto;
     background: $body-odd;
-    padding: 25px 0;
+    padding-top: 25px;
     border-radius: 8px;
     position: relative;
     z-index: 100;
     transform: translateY(-150%);
     transition: all .5s ease;
+
+    h1 {
+        text-align: center;
+    }
 
     @include respond-to(medium) {
         height: auto;
@@ -116,8 +120,10 @@
         padding-top: 25px;
     }
     .right {
+        padding-bottom: 25px;
         @include respond-to(medium) {
             padding-left: 25px;
+            
             &::before {
                 content: '';
                 position: absolute;

@@ -21,30 +21,38 @@ $(document).ready(function () {
     $hamburger.click(function () {
         $(this).toggleClass('open');
         $nav.toggleClass('open');
-        $body.toggleClass("no-scroll");
+        // $body.toggleClass("no-scroll");
+        
+
+        $infoIcon.removeClass("open");
+        $modal.removeClass("open");
+        $modlaContent.removeClass("open");
+
     });
 
     $infoIconWrapper.click(function () {
-        $hamburger.attr("class", "hamburger-wrapper");
-        $nav.attr("class", "site-nav");
+        $hamburger.removeClass("open");
+        $nav.removeClass("open");
         $infoIcon.toggleClass("open");
         $modal.toggleClass("open");
-        $modlaContent.toggleClass("open")
-        $body.toggleClass("no-scroll");
+        $modlaContent.toggleClass("open");
+
+        
     });
 
     $closeModal.click(function () {
         $modal.toggleClass("open");
-        $body.toggleClass("no-scroll");
+        $body.removeClass("no-scroll");
         $infoIcon.toggleClass("open");
-        $modlaContent.toggleClass("open")
+        $modlaContent.toggleClass("open");
     });
 
     $modalOverlay.click(function () {
         $infoIcon.toggleClass("open");
         $modal.toggleClass("open");
-        $body.toggleClass("no-scroll");
-        $modlaContent.toggleClass("open")
+        $body.removeClass("no-scroll");
+        
+        $modlaContent.toggleClass("open");
     });
 
     var $root = $('html, body');
@@ -110,6 +118,8 @@ $(document).ready(function () {
 
 
         var currentTop = window.pageYOffset / 1;
+
+        
         
 
         anchorArr.each(function(){
@@ -118,19 +128,34 @@ $(document).ready(function () {
 
             var currentElementTop = $(this).offset().top;
             var hash = $(this).attr('id');
+
+            
+
             if (currentElementTop - 80 < currentTop && currentTop < currentElementTop - 80 + $(this).height() && currentHash != hash) {
+                
                 if (history.pushState) {
+
+                    
                     history.pushState(null, null, '#' + hash);
+                    
+                    
                 }
+
                 else {
                     location.hash = '#' + hash;
                 }
+
                 currentHash = hash;
-            } 
+
+                
+            }
+            
             
 
         
         });
+
+
             
 
 
