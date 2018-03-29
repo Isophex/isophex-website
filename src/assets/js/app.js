@@ -1,12 +1,17 @@
 import $ from 'jquery';
+import lazySizes from 'lazysizes';
 import Typed from 'typed.js';
 import Vivus from 'vivus';
 
-window.$ = $;
+
+window.jQuery = $;
+
 
 
 $(document).ready(function () {
     console.log("Document is ready");
+
+          
 
     var $body = $("body");
     var $hamburger = $(".hamburger-wrapper");
