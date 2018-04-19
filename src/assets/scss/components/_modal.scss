@@ -1,186 +1,186 @@
-.info-modal {
-    position: fixed;
-    top: 80px;
-    left: 0;
-    width: 100%;
-    height: calc(100% - 80px);
-    z-index: 100;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    visibility: hidden;
-    opacity: 0;
-    transition: all .5s ease-in;
-    padding: 25px;
-    @include respond-to(large) {
-        padding: 0;
-    }
-    &.open {
-        visibility: visible;
-        opacity: 1;
-        transition: all .5s ease-in;
-    }
-    .overlay {
-        position: absolute;
-        background: rgba($color: #000, $alpha: .8);
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
-        width: 100%;
-        height: 100%;
-    }
-}
+// .info-modal {
+//     position: fixed;
+//     top: 80px;
+//     left: 0;
+//     width: 100%;
+//     height: calc(100% - 80px);
+//     z-index: 100;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     visibility: hidden;
+//     opacity: 0;
+//     transition: all .5s ease-in;
+//     padding: 25px;
+//     @include respond-to(large) {
+//         padding: 0;
+//     }
+//     &.open {
+//         visibility: visible;
+//         opacity: 1;
+//         transition: all .5s ease-in;
+//     }
+//     .overlay {
+//         position: absolute;
+//         background: rgba($color: #000, $alpha: .8);
+//         top: 0;
+//         left: 0;
+//         bottom: 0;
+//         right: 0;
+//         width: 100%;
+//         height: 100%;
+//     }
+// }
 
-.modal-content {
-    height: 100%;
-    max-width: 800px;
-    max-height: 1000px;
-    overflow: auto;
-    background: $body-odd;
-    padding-top: 25px;
-    border-radius: 8px;
-    position: relative;
-    z-index: 100;
-    transform: translateY(-150%);
-    transition: all .5s ease;
+// .modal-content {
+//     height: 100%;
+//     max-width: 800px;
+//     max-height: 1000px;
+//     overflow: auto;
+//     background: $body-odd;
+//     padding-top: 25px;
+//     border-radius: 8px;
+//     position: relative;
+//     z-index: 100;
+//     transform: translateY(-150%);
+//     transition: all .5s ease;
 
-    h1 {
-        text-align: center;
-    }
+//     h1 {
+//         text-align: center;
+//     }
 
-    @include respond-to(medium) {
-        height: auto;
-    }
+//     @include respond-to(medium) {
+//         height: auto;
+//     }
 
 
 
-    &.open {
-        transform: translateY(0%);
-        transition: all .5s ease;
-        overflow-x: hidden;
-    }
-    .modal-header {
-        height: 50px;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        .close-button-wrapper {
-            height: 50px;
-            width: 50px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            &:hover>div>span {
-                background: $primary;
-            }
-            .close-button {
-                height: 35px;
-                width: 35px;
-                position: relative;
-                span {
-                    position: absolute;
-                    transform: rotate(135deg);
-                    top: 16px;
-                    left: 0;
-                    width: 100%;
-                    height: 3px;
-                    background: $heading-text;
-                    &:nth-child(2) {
-                        transform: rotate(-135deg);
-                        bottom: 0;
-                    }
-                }
-            }
-        }
-    }
-    p {
-        margin: 0;
-    }
+//     &.open {
+//         transform: translateY(0%);
+//         transition: all .5s ease;
+//         overflow-x: hidden;
+//     }
+//     .modal-header {
+//         height: 50px;
+//         position: absolute;
+//         top: 0;
+//         left: 0;
+//         width: 100%;
+//         display: flex;
+//         align-items: center;
+//         justify-content: flex-end;
+//         .close-button-wrapper {
+//             height: 50px;
+//             width: 50px;
+//             display: flex;
+//             justify-content: center;
+//             align-items: center;
+//             cursor: pointer;
+//             &:hover>div>span {
+//                 background: $primary;
+//             }
+//             .close-button {
+//                 height: 35px;
+//                 width: 35px;
+//                 position: relative;
+//                 span {
+//                     position: absolute;
+//                     transform: rotate(135deg);
+//                     top: 16px;
+//                     left: 0;
+//                     width: 100%;
+//                     height: 3px;
+//                     background: $heading-text;
+//                     &:nth-child(2) {
+//                         transform: rotate(-135deg);
+//                         bottom: 0;
+//                     }
+//                 }
+//             }
+//         }
+//     }
+//     p {
+//         margin: 0;
+//     }
 
-    .grid {
-        align-items: flex-start;
+//     .grid {
+//         align-items: flex-start;
 
-    }
+//     }
 
     
 
-    .left,
-    .right {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        padding-top: 25px;
-    }
-    .right {
-        padding-bottom: 25px;
-        @include respond-to(medium) {
-            padding-left: 25px;
+//     .left,
+//     .right {
+//         display: flex;
+//         flex-direction: column;
+//         align-items: center;
+//         justify-content: center;
+//         position: relative;
+//         padding-top: 25px;
+//     }
+//     .right {
+//         padding-bottom: 25px;
+//         @include respond-to(medium) {
+//             padding-left: 25px;
             
-            &::before {
-                content: '';
-                position: absolute;
-                bottom: 0;
-                top: 0;
-                left: 0;
-                right: 0;
+//             &::before {
+//                 content: '';
+//                 position: absolute;
+//                 bottom: 0;
+//                 top: 0;
+//                 left: 0;
+//                 right: 0;
                 
-                background: $accent;
-                height: 100%;
-                width: 1px;
-            }
-        }
-    }
-    .image-wrapper {
-        border-radius: 50%;
-        margin-bottom: 25px;
-        border: 2px solid $primary;
-        width: 100px;
-        img {
-            border-radius: 50%;
-        }
-    }
-    // .people-wrapper {
-    //     padding: 25px 0;
-    // }
+//                 background: $accent;
+//                 height: 100%;
+//                 width: 1px;
+//             }
+//         }
+//     }
+//     .image-wrapper {
+//         border-radius: 50%;
+//         margin-bottom: 25px;
+//         border: 2px solid $primary;
+//         width: 100px;
+//         img {
+//             border-radius: 50%;
+//         }
+//     }
+//     // .people-wrapper {
+//     //     padding: 25px 0;
+//     // }
 
-    .social-list {
+//     .social-list {
 
-        padding: 10px 0px;
+//         padding: 10px 0px;
 
-        li {
-            display: inline-block;
-            margin-right: 5px;
+//         li {
+//             display: inline-block;
+//             margin-right: 5px;
 
-            &:last-child {
-                margin-right: 0px;
-            }
+//             &:last-child {
+//                 margin-right: 0px;
+//             }
 
-        }
+//         }
 
-    }
-}
+//     }
+// }
 
-.intro-text-wrapper {
-    width: 100%;
-    position: relative;
-    padding-bottom: 25px;
-    &::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        margin-right: -75px;
-        margin-left: -75px;
-        background: $accent;
-        height: 1px;
-    }
-}
+// .intro-text-wrapper {
+//     width: 100%;
+//     position: relative;
+//     padding-bottom: 25px;
+//     &::after {
+//         content: '';
+//         position: absolute;
+//         bottom: 0;
+//         left: 0;
+//         right: 0;
+//         margin-right: -75px;
+//         margin-left: -75px;
+//         background: $accent;
+//         height: 1px;
+//     }
+// }

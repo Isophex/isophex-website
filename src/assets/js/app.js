@@ -306,8 +306,6 @@ $(document).ready(function () {
                     $(formMessages).text(response);
 
                     // Clear the form.
-                    // $('#meeting-company').val('');
-                    $('#company').val('');
                     $('#name').val('');
                     $('#email').val('');
                     $('#message').val('');

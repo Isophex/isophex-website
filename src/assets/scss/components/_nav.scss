@@ -1,65 +1,65 @@
-.site-nav {
-    visibility: hidden;
-    transform: translate3d(100%,0,0);
-    opacity: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    z-index: 999;
-    // top: 80px;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    width: 100%;
-    top: 80px;
-    background: rgba($color: $body, $alpha: .98);
-    height: calc(100% - 80px);
-    transition: all .25s ease-out;
-    backface-visibility: hidden;
+// .site-nav {
+//     visibility: hidden;
+//     transform: translate3d(100%,0,0);
+//     opacity: 0;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     position: fixed;
+//     z-index: 999;
+//     // top: 80px;
+//     left: 0;
+//     bottom: 0;
+//     right: 0;
+//     width: 100%;
+//     top: 80px;
+//     background: rgba($color: $body, $alpha: .98);
+//     height: calc(100% - 80px);
+//     transition: all .25s ease-out;
+//     backface-visibility: hidden;
 
-    .nav-list {
-        text-align: center;
-        transform: translateY(-28px);
+//     .nav-list {
+//         text-align: center;
+//         transform: translateY(-28px);
 
-    }
+//     }
 
 
 
-    .social-list {
-        position: absolute;
-        bottom: 25px;
-        width: 100%;
-        text-align: center;
+//     .social-list {
+//         position: absolute;
+//         bottom: 25px;
+//         width: 100%;
+//         text-align: center;
 
-        @include respond-to(large) {
-            bottom: 50px;
-        }
+//         @include respond-to(large) {
+//             bottom: 50px;
+//         }
 
-        li {
-            display: inline-block;
-            margin-left: 25px;
+//         li {
+//             display: inline-block;
+//             margin-left: 25px;
 
-            &:first-child {
-                margin-left: 0;
-            }
+//             &:first-child {
+//                 margin-left: 0;
+//             }
 
-            &:hover > a > svg {
-                opacity: .7;
-            }
+//             &:hover > a > svg {
+//                 opacity: .7;
+//             }
 
-        }
+//         }
 
-    }
+//     }
     
         
-}
+// }
 
-.site-nav.open {
-    visibility: visible;
-    transform: translate3d(0,0,0);
-    // backface-visibility: hidden;
-    // perspective: 1000;
-    opacity: 1;
-    transition: all .25s ease-out;
-}
+// .site-nav.open {
+//     visibility: visible;
+//     transform: translate3d(0,0,0);
+//     // backface-visibility: hidden;
+//     // perspective: 1000;
+//     opacity: 1;
+//     transition: all .25s ease-out;
+// }
