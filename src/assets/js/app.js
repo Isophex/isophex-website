@@ -115,6 +115,8 @@ $(document).ready(function () {
     var $inclineImg = $(".incline .image-wrapper img");
     var $chinahubTarget = $(".chinahub .image-wrapper");
     var $chinahubImg = $(".chinahub .image-wrapper img");
+    var $suviTarget = $(".suvi .image-wrapper");
+    var $suviImg = $(".suvi .image-wrapper img");
 
     var currentHash = "#";
     var anchorArr = $('.anchor');
@@ -150,7 +152,40 @@ $(document).ready(function () {
             var st = $(window).scrollTop();
 
             //if image is in viewport
-            if (isInViewport($heliosTarget)) {
+            if (isInViewport($suviTarget)) {
+
+                //if scrolling down
+                if (st >= lastScrollTop) {
+
+
+                    $suviImg.animate({ top: "-=5" }, 5, function () {
+
+                        if ($(this).css('top') <= "75") {
+                            $(this).css({ top: "75px" });
+                        }
+
+                    });
+
+                } else {
+
+                    //scrolling up
+                    $suviImg.animate({ top: "+=5" }, 5, function () {
+
+                        if ($(this).position().top >= 100) {
+                            $(this).css({ top: "100px" });
+                        }
+
+                    });
+
+                }
+
+                //resets scroller var
+                lastScrollTop = st;
+
+            } 
+            else if (isInViewport($heliosTarget)) {
+
+                $suviImg.css({ top: "100px" });
 
                 //if scrolling down
                 if (st >= lastScrollTop) {

@@ -1,6 +1,6 @@
 .work {
     
-    background: $body-odd;
+    background: $body;
 
     .image-wrapper {
         max-width: 400px;
@@ -102,7 +102,7 @@
 
     .helios, .chinahub {
 
-        background: $body;
+        
 
         .right {
             @include respond-to(medium) {
@@ -128,9 +128,9 @@
         // }
     }
 
-    .incline {
+    .suvi, .incline {
 
-        background: $body-odd;
+        
 
         .left {
 
